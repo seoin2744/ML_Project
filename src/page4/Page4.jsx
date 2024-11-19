@@ -38,7 +38,7 @@ const Page4 = () => {
           이전
         </button>
         <button className="next-button" onClick={handleNext}>
-          다음
+          헤어스타일
         </button>
       </div>
     </div>
