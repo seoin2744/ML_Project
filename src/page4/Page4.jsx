@@ -22,8 +22,6 @@ const Page4 = () => {
       <p className="subtext">
         둥근 얼굴형은 <span id="context-bold">가로폭 세로폭 비율이 비슷하고, 광대와 턱을 잇는 라인에 볼살이 많아서 <br />얼굴이 부드럽고 동그래보이는 것</span>이 특징이에요.
         그래서 <span id="context-bold">사랑스럽고 귀여운 이미지</span>가 강합니다.<br />
-        
-
       </p>
       <div className="options">
         <div className="option">
