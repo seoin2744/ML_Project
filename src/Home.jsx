@@ -8,7 +8,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate("/page1"); 
+    navigate("/page2"); 
   };
 
   return (

@@ -16,7 +16,7 @@ const Page4 = () => {
   return (
     <div className="container">
       <div className="progress-bar">
-        <div className="progress" style={{ width: `${(4 / 5) * 100}%` }}></div>
+        <div className="progress" style={{ width: `${(3 / 4) * 100}%` }}></div>
       </div>
       <h1>당신의 얼굴형은 <span id="result-bold">둥근형</span>입니다.</h1>
       <p className="subtext">
