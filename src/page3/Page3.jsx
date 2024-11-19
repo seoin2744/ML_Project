@@ -33,6 +33,9 @@ const Page3 = () => {
       <h1>
         모델 <span id="result-bold">분석</span>중
       </h1>
+      <p className="subtext">
+        <span id="context-bold">모델 분석 완료</span>가 뜨면 다음 버튼을 눌러주세요!
+      </p>
       <div className="options">
         <div className="option" id="option">
           {uploadedImage ? (
