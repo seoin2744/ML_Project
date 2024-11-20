@@ -36,7 +36,7 @@ export const Home = () => {
             </div>
           </div>
 
-          <p className="p">AI 기반 얼굴형 기반 헤어스타일 추천 서비스!</p>
+          <p className="p">CNN을 활용한 얼굴형 기반 헤어스타일 추천 서비스!</p>
         </div>
       </div>
 
