@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./page2.css";
 
-const Page2 = () => {
+const Page2 = ({ setUploadedFile }) => {
   const navigate = useNavigate();
   const [uploadedImage, setUploadedImage] = useState(null);
 
   const handleNext = () => {
+    if (!uploadedImage) {
+      alert("이미지를 업로드하세요!");
+      return;
+    }
     navigate("/page3");
-  };
-
-  const handlePrevious = () => {
-    navigate("/");
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0]; // 업로드된 파일 가져오기
     if (file) {
+      setUploadedFile(file); // 부모 컴포넌트로 파일 전달
       const reader = new FileReader(); // FileReader로 파일 읽기
       reader.onload = (event) => {
         setUploadedImage(event.target.result); // 이미지를 상태에 저장
@@ -53,9 +54,6 @@ const Page2 = () => {
         </div>
       </div>
       <div className="navigation">
-        <button className="prev-button" onClick={handlePrevious}>
-          이전
-        </button>
         <button className="next-button" onClick={handleNext}>
           다음
         </button>
