@@ -48,7 +48,11 @@ function App() {
     },
     {
       path: "/page5",
-      element: <Page5 />,
+      element: (
+        <Page5
+          predictionResult={predictionResult} // 예측 결과 전달
+        />
+      ),
     },
   ]);
 
