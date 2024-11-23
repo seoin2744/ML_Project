@@ -30,31 +30,12 @@ const Page3 = () => {
       <div className="progress-bar">
         <div className="progress" style={{ width: `${(2 / 4) * 100}%` }}></div>
       </div>
-      <h1>
-        모델 <span id="result-bold">분석</span>중
-      </h1>
-      <p className="subtext">
-        <span id="context-bold">모델 분석 완료</span>가 뜨면 결과 버튼을 눌러주세요!
-      </p>
-      <div className="options">
-        <div className="option" id="option">
-          {uploadedImage ? (
-            <img src={uploadedImage} alt="업로드된 이미지" />
-          ) : (
-            <img src="" alt="이미지를 업로드하세요." />
-          )}
-          <input
-            type="file"
-            accept="image/*"
-            id="file-input"
-            style={{ display: "none" }}
-            onChange={handleFileChange} // 파일 선택 시 처리
-          />
-          <label htmlFor="file-input" className="upload_img">
-            업로드
-          </label>
-        </div>
-      </div>
+      <h1>당신의 <span id="result-bold">얼굴형</span>을 확인하세요!</h1>
+      {loading ? (
+        <p className="subtext">모델 분석 중입니다. 잠시만 기다려주세요...</p>
+      ) : (
+        <p className="subtext">모델 분석 완료! 결과 버튼을 눌러주세요.</p>
+      )}
       <div className="navigation">
         <button className="prev-button" onClick={handlePrevious}>
           이전

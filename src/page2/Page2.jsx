@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./page2.css";
 
-const Page2 = () => {
+const Page2 = ({ setUploadedFile, uploadedFile }) => {
   const navigate = useNavigate();
   const [uploadedImage, setUploadedImage] = useState(null);
+
+  // 부모 컴포넌트에서 받은 파일 상태를 사용해 이미지 미리보기 설정
+  useEffect(() => {
+    if (uploadedFile) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setUploadedImage(event.target.result); // 이미지 미리보기 설정
+      };
+      reader.readAsDataURL(uploadedFile);
+    }
+  }, [uploadedFile]);
 
   const handleNext = () => {
     navigate("/page3");
@@ -17,11 +28,12 @@ const Page2 = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0]; // 업로드된 파일 가져오기
     if (file) {
-      const reader = new FileReader(); // FileReader로 파일 읽기
+      setUploadedFile(file); // 부모 컴포넌트로 파일 전달
+      const reader = new FileReader();
       reader.onload = (event) => {
-        setUploadedImage(event.target.result); // 이미지를 상태에 저장
+        setUploadedImage(event.target.result); // 이미지 미리보기 상태 저장
       };
-      reader.readAsDataURL(file); // 파일을 Data URL로 읽기
+      reader.readAsDataURL(file);
     }
   };
 
@@ -45,7 +57,7 @@ const Page2 = () => {
             accept="image/*"
             id="file-input"
             style={{ display: "none" }}
-            onChange={handleFileChange} // 파일 선택 시 처리
+            onChange={handleFileChange}
           />
           <label htmlFor="file-input" className="upload_img">
             업로드

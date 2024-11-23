@@ -35,6 +35,55 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  // 상태 관리
+  const [uploadedFile, setUploadedFile] = useState(null); // 업로드된 파일
+  const [predictionResult, setPredictionResult] = useState(null); // 모델 예측 결과
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/page1",
+      element: <Page1 />,
+    },
+    {
+      path: "/page2",
+      element: (
+        <Page2
+          setUploadedFile={setUploadedFile} // 파일 업로드 상태를 전달
+          uploadedFile={uploadedFile} // 업로드된 파일 전달
+        />
+      ),
+    },
+    {
+      path: "/page3",
+      element: (
+        <Page3
+          uploadedFile={uploadedFile} // 업로드된 파일 전달
+          setPredictionResult={setPredictionResult} // 예측 결과 상태 전달
+        />
+      ),
+    },
+    {
+      path: "/page4",
+      element: (
+        <Page4
+          predictionResult={predictionResult} // 예측 결과 전달
+        />
+      ),
+    },
+    {
+      path: "/page5",
+      element: (
+        <Page5
+          predictionResult={predictionResult} // 예측 결과 전달
+        />
+      ),
+    },
+  ]);  
+
   return <RouterProvider router={router} />;
 }
 
