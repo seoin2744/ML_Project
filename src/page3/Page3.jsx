@@ -1,27 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./page3.css";
 
-const Page3 = () => {
+const Page3 = ({ uploadedFile, setPredictionResult }) => {
   const navigate = useNavigate();
-  const [uploadedImage, setUploadedImage] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (uploadedFile) {
+      // 업로드된 이미지를 FastAPI로 전송
+      const formData = new FormData();
+      formData.append("file", uploadedFile);
+
+      axios
+        .post("http://127.0.0.1:8000/predict/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          setPredictionResult(response.data); // 결과 저장
+          setLoading(false); // 로딩 상태 해제
+        })
+        .catch((error) => {
+          console.error("Error during prediction:", error);
+          alert("예측 중 오류가 발생했습니다.");
+        });
+    }
+  }, [uploadedFile, setPredictionResult]);
 
   const handleNext = () => {
-    navigate("/page4");
-  };
-
-  const handlePrevious = () => {
-    navigate("/page2");
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0]; // 업로드된 파일 가져오기
-    if (file) {
-      const reader = new FileReader(); // FileReader로 파일 읽기
-      reader.onload = (event) => {
-        setUploadedImage(event.target.result); // 이미지를 상태에 저장
-      };
-      reader.readAsDataURL(file); // 파일을 Data URL로 읽기
+    if (!loading) {
+      navigate("/page4"); // 로딩 완료 후 페이지 이동
     }
   };
 
@@ -30,35 +41,13 @@ const Page3 = () => {
       <div className="progress-bar">
         <div className="progress" style={{ width: `${(2 / 4) * 100}%` }}></div>
       </div>
-      <h1>
-        모델 <span id="result-bold">분석</span>중
-      </h1>
-      <p className="subtext">
-        <span id="context-bold">모델 분석 완료</span>가 뜨면 결과 버튼을 눌러주세요!
-      </p>
-      <div className="options">
-        <div className="option" id="option">
-          {uploadedImage ? (
-            <img src={uploadedImage} alt="업로드된 이미지" />
-          ) : (
-            <img src="" alt="이미지를 업로드하세요." />
-          )}
-          <input
-            type="file"
-            accept="image/*"
-            id="file-input"
-            style={{ display: "none" }}
-            onChange={handleFileChange} // 파일 선택 시 처리
-          />
-          <label htmlFor="file-input" className="upload_img">
-            업로드
-          </label>
-        </div>
-      </div>
+      <h1>모델 <span id="result-bold">분석</span>중</h1>
+      {loading ? (
+        <p className="subtext">모델 분석 중입니다. 잠시만 기다려주세요...</p>
+      ) : (
+        <p className="subtext">모델 분석 완료! 결과 버튼을 눌러주세요.</p>
+      )}
       <div className="navigation">
-        <button className="prev-button" onClick={handlePrevious}>
-          이전
-        </button>
         <button className="next-button" onClick={handleNext}>
           결과
         </button>
