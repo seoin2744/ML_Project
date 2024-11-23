@@ -97,7 +97,15 @@ h1 {
   background-color: #e0e0e0;
 }
 
+.prev-button:hover {
+  background-color: #afafaf;
+}
+
 .next-button {
   background-color: #cfc2e9;
   color: #fff;
+}
+
+.next-button:hover {
+  background-color: #bfa0fc;
 }

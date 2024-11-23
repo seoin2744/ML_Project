@@ -35,7 +35,6 @@ h1 {
 .subtext {
   color: #888;
   font-size: 14px;
-  margin: 15px 0 0 0;
   padding-bottom: 20px;
 }
 
@@ -49,8 +48,11 @@ h1 {
   margin-top: 50px;
 }
 
+#option {
+  width: 350px;
+}
+
 .option {
-  width: 280px;
   height: 300px;
   padding: 10px;
   border: 1px solid #afafaf;
@@ -62,22 +64,29 @@ h1 {
   align-items: center;
 }
 
-.option img {
-  width: 100%;
-  height: 90%;
-  margin-bottom: 0;
+.container .option img {
+  height: 88%;
   object-fit: contain;
 }
 
-#img3 {
-  object-fit: cover;
+.upload_img {
+  display: inline-block;
+  background-color: #e0e0e0;
+  margin: 0;
+  font-size: 13px;
+  color: #333;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.42);
+  text-align: center;
 }
 
-.subtext-context {
-  margin: 0;
-  font-size: 16px;
-  color: #333;
+.upload_img:hover {
+  background-color: #afafaf;
 }
+
 
 .navigation {
   display: flex;
