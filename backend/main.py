@@ -20,7 +20,7 @@ app.add_middleware(
 )
 
 # 모델 로드
-model = load_model("cnn_face_model.h5")
+model = load_model("cnn_face_model.keras")
 
 # 클래스 이름
 class_names = ["Heart", "Oval", "Round", "Square"]
