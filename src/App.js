@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Home";
 import Page1 from "./page1/Page1";
@@ -8,9 +8,20 @@ import Page4 from "./page4/Page4";
 import Page5 from "./page5/Page5";
 
 function App() {
-  // 상태 관리
   const [uploadedFile, setUploadedFile] = useState(null); // 업로드된 파일
   const [predictionResult, setPredictionResult] = useState(null); // 모델 예측 결과
+
+  useEffect(() => {
+    // 새로고침 시 상태 초기화
+    const handleBeforeUnload = () => {
+      setUploadedFile(null);
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   const router = createBrowserRouter([
     {
@@ -25,8 +36,8 @@ function App() {
       path: "/page2",
       element: (
         <Page2
-          setUploadedFile={setUploadedFile} // 파일 업로드 상태를 전달
-          uploadedFile={uploadedFile} // 업로드된 파일 전달
+          setUploadedFile={setUploadedFile}
+          uploadedFile={uploadedFile}
         />
       ),
     },
@@ -34,26 +45,18 @@ function App() {
       path: "/page3",
       element: (
         <Page3
-          uploadedFile={uploadedFile} // 업로드된 파일 전달
-          setPredictionResult={setPredictionResult} // 예측 결과 상태 전달
+          uploadedFile={uploadedFile}
+          setPredictionResult={setPredictionResult}
         />
       ),
     },
     {
       path: "/page4",
-      element: (
-        <Page4
-          predictionResult={predictionResult} // 예측 결과 전달
-        />
-      ),
+      element: <Page4 predictionResult={predictionResult} />,
     },
     {
       path: "/page5",
-      element: (
-        <Page5
-          predictionResult={predictionResult} // 예측 결과 전달
-        />
-      ),
+      element: <Page5 predictionResult={predictionResult} />,
     },
   ]);
 
@@ -61,4 +64,3 @@ function App() {
 }
 
 export default App;
-

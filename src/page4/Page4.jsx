@@ -64,11 +64,20 @@ const Page4 = ({ predictionResult }) => {
   };
 
   const { subtext, options } = renderContent();
+
   return (
     <div className="container">
       <div className="progress-bar">
         <div className="progress" style={{ width: `${(3 / 4) * 100}%` }}></div>
       </div>
+      <h1>
+        당신의 얼굴형은{" "}
+        <span id="result-bold">
+          {predictionResult.class}형
+        </span>
+        입니다. ({(predictionResult.confidence * 100).toFixed(2)}%)
+      </h1>
+      <p className="subtext">{subtext}</p>
       <div className="options">
         {options.map((option, index) => (
           <div className="option" key={index}>

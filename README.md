@@ -13,3 +13,4 @@ FastAPI 서버 실행 명령: `uvicorn main:app --reload`
 
 필요한 라이브러리 다운로드 `pip install fastapi uvicorn tensorflow python-multipart pillow`
 JSON 응답 데이터를 보기 쉽게 출력하는 라이브러리 `pip install orjson`
+Fast-api 모듈 설치 : `npm install face-api.js`

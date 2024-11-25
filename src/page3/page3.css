@@ -28,65 +28,59 @@ h1 {
   color: #a882f2;
 }
 
-#context-bold {
-  font-weight: bold;
-}
-
 .subtext {
   color: #888;
   font-size: 14px;
   padding-bottom: 20px;
 }
 
-.subtext-context {
-  margin: 0;
-}
-
 .options {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* 옵션을 화면 중앙으로 */
   margin-top: 50px;
 }
 
 #option {
-  width: 350px;
+  width: 350px; /* 부모 요소 너비에 맞게 */
 }
 
 .option {
   height: 300px;
   padding: 10px;
   border: 1px solid #afafaf;
-  border-radius: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
-  align-items: center;
+  border-radius: 15px; /* 둥근 박스 */
+  display: flex; /* 중앙 정렬 */
+  justify-content: center!important; /* 가로 중앙 정렬 */ 
+  align-items: center!important; /* 세로 중앙 정렬 */
 }
 
 .container .option img {
-  height: 88%;
-  object-fit: contain;
+  max-width: 100%; /* 부모 너비 초과 방지 */
+  max-height: 100%; /* 부모 높이 초과 방지 */
+  object-fit: contain; /* 이미지 비율 유지 */
 }
 
-.upload_img {
+.image-container {
+  position: relative;
   display: inline-block;
-  background-color: #e0e0e0;
-  margin: 0;
-  font-size: 13px;
-  color: #333;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.42);
-  text-align: center;
+  width: 100%; /* 이미지 컨테이너 크기 */
+  height: auto; /* 높이는 자동으로 */
 }
 
-.upload_img:hover {
-  background-color: #afafaf;
+.overlay-image {
+  display: block;
+  width: 100%; /* 이미지 크기 조정 */
+  height: auto; /* 비율 유지 */
 }
 
+.overlay-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* 캔버스를 이미지 크기에 맞춤 */
+  height: 100%; /* 캔버스를 이미지 크기에 맞춤 */
+  pointer-events: none; /* 클릭 이벤트 방지 */
+}
 
 .navigation {
   display: flex;
