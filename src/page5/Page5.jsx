@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./page5.css";
 
-const Page5 = () => {
+const Page5 = ({ predictionResult }) => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("woman"); // 기본 탭은 "woman"
 

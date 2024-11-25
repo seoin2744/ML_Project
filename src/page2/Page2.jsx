@@ -18,11 +18,11 @@ const Page2 = ({ setUploadedFile, uploadedFile }) => {
   }, [uploadedFile]);
 
   const handleNext = () => {
+    if (!uploadedImage) {
+      alert("이미지를 업로드하세요!");
+      return;
+    }
     navigate("/page3");
-  };
-
-  const handlePrevious = () => {
-    navigate("/");
   };
 
   const handleFileChange = (e) => {
@@ -65,9 +65,6 @@ const Page2 = ({ setUploadedFile, uploadedFile }) => {
         </div>
       </div>
       <div className="navigation">
-        <button className="prev-button" onClick={handlePrevious}>
-          이전
-        </button>
         <button className="next-button" onClick={handleNext}>
           다음
         </button>
