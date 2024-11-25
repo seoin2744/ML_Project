@@ -86,12 +86,13 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
       <div className="progress-bar">
         <div className="progress" style={{ width: `${(2 / 4) * 100}%` }}></div>
       </div>
-      <h1>모델 <span id="result-bold">분석</span>중</h1>
+      <h1>당신의 <span id="result-bold">얼굴형</span>을 확인하세요!</h1>
       {loading ? (
         <p className="subtext">모델 분석 중입니다. 잠시만 기다려주세요...</p>
       ) : (
         <p className="subtext">모델 분석 완료! 결과 버튼을 눌러주세요.</p>
       )}
+
       <div className="options">
         <div className="option">
           {imageWithLandmarks ? (

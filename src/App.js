@@ -26,6 +26,7 @@ function App() {
       element: (
         <Page2
           setUploadedFile={setUploadedFile} // 파일 업로드 상태를 전달
+          uploadedFile={uploadedFile} // 업로드된 파일 전달
         />
       ),
     },
