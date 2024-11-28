@@ -34,7 +34,7 @@ const Page4 = ({ predictionResult }) => {
             "둥근형은 길이 대비 가로 너비가 넓으며 아기처럼 광대, 턱 골격이 발달되지 않은 얼굴형입니다. ",
           options: [
             { src: "/assets/김다미.jpg", alt: "김다미", name: "김다미" },
-            { src: "/assets/조세호.jpg", alt: "조세호", name: "조세호" },
+            { src: "/assets/조세호.png", alt: "조세호", name: "조세호" },
           ],
         };
       case "Heart":

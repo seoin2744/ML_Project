@@ -43,13 +43,13 @@ h1 {
   width: 350px;
 }
 
-#options {
+#options-5 {
   display: flex;
   justify-content: space-around;
-  /* margin-top: 50px; */
 }
 
-.option {
+
+.option-5 {
   width: 280px;
   height: 300px;
   padding: 10px;
@@ -58,37 +58,107 @@ h1 {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
+  perspective: 1000px;
 }
 
-.option-content {
-  width: 260px;
-  height: 90%;
-  justify-content: center; 
-  align-items: center;
+.option-5.flipped .option-content-5 {
+  transform: rotateY(180deg);
+}
+
+.option-5.flipped .option-back {
+  transform: rotateY(0deg);
+}
+
+.option-content-5,
+.option-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  border-radius: 8px;
+}
+
+.option-content-5 {
+  background: white;
+  display: flex;
   flex-direction: column;
-  object-fit: contain;
-  display: flex
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(0deg);
+  border: 1px solid #ddd;
 }
 
-.option img {
+.option-back {
+  background: #f5f5f5;
+  transform: rotateY(-180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-back img {
   width: 100%;
   height: 90%;
   margin-bottom: 0;
   object-fit: contain;
 }
 
-.subtext-context {
-  margin-top: 10px;
+
+.style-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 20px; 
+}
+
+.recommendation-text,
+.not-recommendation-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.recommendation-text h3,
+.not-recommendation-text h3 {
   font-size: 16px;
+  font-weight: bold;
   color: #333;
 }
 
-.tab-container {
+.style-buttons {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.style-button {
+  margin: 5px;
+  padding: 20px;
+  width: 95%;
+  background-color: #cfc2e9;
+  color: black;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.style-button:hover {
+  background-color: #bfa0fc;
+}
+
+.subtext-context-5 {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
 }
 
 .tab-button {
@@ -96,19 +166,20 @@ h1 {
   background-color: #d9d9d9;
   border-radius: 15px;
   cursor: pointer;
-  border: none; /* 테두리 제거 */
-  transition: background-color 0.3s ease; /* 부드러운 색 변화 */
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
 .tab-button:hover {
-  background-color: #b392f4; /* 커서 올렸을 때 색상 */
+  background-color: #b392f4;
 }
 
 .tab-button.active {
   background-color: #cfc2e9;
 }
 
-.process-block {
+
+.process {
   display: flex;
   flex-direction: column;
   width: 100%;
