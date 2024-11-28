@@ -15,7 +15,7 @@
 }
 
 #option {
-  width: 350px; /* 부모 요소 너비에 맞게 */
+  width: 350px; 
 }
 
 .container .option img {
@@ -27,14 +27,18 @@
 .image-container {
   position: relative;
   display: inline-block;
-  width: 100%; 
+  width: auto; 
+  max-width: 350px;
+  max-height: 250px;
   height: auto; 
+  overflow: hidden;
 }
 
 .overlay-image {
   display: block;
-  width: 100%; 
+  width: auto; 
   height: auto; 
+  object-fit: contain;
 }
 
 .overlay-canvas {

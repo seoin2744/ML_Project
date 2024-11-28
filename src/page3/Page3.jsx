@@ -37,12 +37,21 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
 
       let index = 0;
 
+      // 캔버스 크기와 이미지 크기의 비율을 맞추기 위한 스케일링 계산
+      const scaleX = canvas.width / img.naturalWidth;
+      const scaleY = canvas.height / img.naturalHeight;
+
       const drawPoint = () => {
         if (index >= landmarks.length) return;
 
         const point = landmarks[index];
+
+        // 랜드마크 좌표를 캔버스 크기에 맞게 변환
+        const scaledX = point.x * scaleX;
+        const scaledY = point.y * scaleY;
+
         ctx.beginPath();
-        ctx.arc(point.x, point.y, 9, 0, Math.PI * 2);
+        ctx.arc(scaledX, scaledY, 4, 0, Math.PI * 2);
         ctx.fillStyle = "white";
         ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
@@ -61,26 +70,24 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
 
       await loadModels();
 
-      // 원본 이미지와 캔버스 크기 설정
       const img = await faceapi.bufferToImage(uploadedFile);
       const canvas = canvasRef.current;
 
-      // 수정사항1 - 이미지 비율 유지하며 캔버스 크기 조정
-      const maxCanvasWidth = 800; // 캔버스의 최대 너비 (임의로 설정)
-      const scaleFactor = Math.min(1, maxCanvasWidth / img.naturalWidth); // 축소 비율 계산
+      // 이미지 크기 비율에 맞춰 캔버스 크기 설정
+      const maxCanvasWidth = 800;
+      const scaleFactor = Math.min(1, maxCanvasWidth / img.naturalWidth); // 캔버스 너비를 이미지 크기 비율에 맞게 조정
       canvas.width = img.naturalWidth * scaleFactor;
-      canvas.height = img.naturalHeight * scaleFactor;
+      canvas.height = img.naturalHeight * scaleFactor; // 이미지의 세로 비율에 맞게 캔버스 높이 조정
 
-      setUploadedImage(URL.createObjectURL(uploadedFile)); // 업로드된 이미지 URL 저장
+      setUploadedImage(URL.createObjectURL(uploadedFile));
 
       const detections = await faceapi
-        // 수정사항2 - 감지 옵션 조정
         .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 512, scoreThreshold: 0.5 }))
         .withFaceLandmarks();
 
       if (detections) {
         const landmarks = detections.landmarks.positions;
-        await drawLandmarksAnimated(img, landmarks);
+        await drawLandmarksAnimated(img, landmarks); // 랜드마크 그리기
       } else {
         alert("얼굴을 감지할 수 없습니다.");
       }
