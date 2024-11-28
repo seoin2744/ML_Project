@@ -7,8 +7,8 @@ import * as faceapi from "face-api.js";
 const Page3 = ({ uploadedFile, setPredictionResult }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [uploadedImage, setUploadedImage] = useState(null); // 이미지를 저장
-  const canvasRef = useRef(null); // 캔버스 참조를 위한 ref
+  const [uploadedImage, setUploadedImage] = useState(null); 
+  const canvasRef = useRef(null); 
 
   const handlePrevious = () => {
     navigate("/page2");
@@ -46,7 +46,6 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
 
         const point = landmarks[index];
 
-        // 랜드마크 좌표를 캔버스 크기에 맞게 변환
         const scaledX = point.x * scaleX;
         const scaledY = point.y * scaleY;
 
@@ -73,11 +72,10 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
       const img = await faceapi.bufferToImage(uploadedFile);
       const canvas = canvasRef.current;
 
-      // 이미지 크기 비율에 맞춰 캔버스 크기 설정
       const maxCanvasWidth = 800;
-      const scaleFactor = Math.min(1, maxCanvasWidth / img.naturalWidth); // 캔버스 너비를 이미지 크기 비율에 맞게 조정
+      const scaleFactor = Math.min(1, maxCanvasWidth / img.naturalWidth); 
       canvas.width = img.naturalWidth * scaleFactor;
-      canvas.height = img.naturalHeight * scaleFactor; // 이미지의 세로 비율에 맞게 캔버스 높이 조정
+      canvas.height = img.naturalHeight * scaleFactor; 
 
       setUploadedImage(URL.createObjectURL(uploadedFile));
 
@@ -87,7 +85,7 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
 
       if (detections) {
         const landmarks = detections.landmarks.positions;
-        await drawLandmarksAnimated(img, landmarks); // 랜드마크 그리기
+        await drawLandmarksAnimated(img, landmarks); 
       } else {
         alert("얼굴을 감지할 수 없습니다.");
       }
