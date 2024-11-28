@@ -1,0 +1,17 @@
+.upload_img {
+  display: inline-block;
+  background-color: #e0e0e0;
+  margin-top: 5px;
+  font-size: 13px;
+  color: #333;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.42);
+  text-align: center;
+}
+
+.upload_img:hover {
+  background-color: #afafaf;
+}
