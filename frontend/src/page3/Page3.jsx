@@ -92,7 +92,8 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
       formData.append("file", uploadedFile);
 
       try {
-        const response = await axios.post("http://<EC2_PUBLIC_IP>:8000/predict/", formData, {
+        const API_URL = process.env.REACT_APP_API_URL;
+        const response = await axios.post(`${API_URL}/predict/`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
