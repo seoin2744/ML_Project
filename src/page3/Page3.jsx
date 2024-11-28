@@ -61,7 +61,6 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
 
       await loadModels();
 
-      // 원본 이미지와 캔버스 크기 설정
       const img = await faceapi.bufferToImage(uploadedFile);
       const canvas = canvasRef.current;
 
