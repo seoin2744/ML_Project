@@ -180,7 +180,9 @@ const Page5 = ({ predictionResult }) => {
         <div id="options">
           {activeStyles.map((style, index) => (
             <div className="option" key={index}>
-              <img src={style.src} alt={style.alt} />
+              <div className="option-content">
+                <img src={style.src} alt={style.alt} />
+              </div>
               <p className="subtext-context">{style.description}</p>
             </div>
           ))}
