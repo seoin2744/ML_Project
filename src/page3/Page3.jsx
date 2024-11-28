@@ -65,13 +65,17 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
       const img = await faceapi.bufferToImage(uploadedFile);
       const canvas = canvasRef.current;
 
-      canvas.width = img.naturalWidth;
-      canvas.height = img.naturalHeight;
+      // 수정사항1 - 이미지 비율 유지하며 캔버스 크기 조정
+      const maxCanvasWidth = 800; // 캔버스의 최대 너비 (임의로 설정)
+      const scaleFactor = Math.min(1, maxCanvasWidth / img.naturalWidth); // 축소 비율 계산
+      canvas.width = img.naturalWidth * scaleFactor;
+      canvas.height = img.naturalHeight * scaleFactor;
 
       setUploadedImage(URL.createObjectURL(uploadedFile)); // 업로드된 이미지 URL 저장
 
       const detections = await faceapi
-        .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
+        // 수정사항2 - 감지 옵션 조정
+        .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 512, scoreThreshold: 0.5 }))
         .withFaceLandmarks();
 
       if (detections) {
