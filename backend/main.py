@@ -17,7 +17,9 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
-model = load_model("cnn_face_model.keras")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "cnn_face_model.keras")
+model = load_model(MODEL_PATH)
 
 class_names = ["Heart", "Oval", "Round", "Square"]
 

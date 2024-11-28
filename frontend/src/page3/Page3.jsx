@@ -31,13 +31,11 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
 
-      // 캔버스 초기화 및 이미지 그리기
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
       let index = 0;
 
-      // 캔버스 크기와 이미지 크기의 비율을 맞추기 위한 스케일링 계산
       const scaleX = canvas.width / img.naturalWidth;
       const scaleY = canvas.height / img.naturalHeight;
 
@@ -94,7 +92,7 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
       formData.append("file", uploadedFile);
 
       try {
-        const response = await axios.post("http://127.0.0.1:8000/predict/", formData, {
+        const response = await axios.post("http://<EC2_PUBLIC_IP>:8000/predict/", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
