@@ -5,14 +5,13 @@ import "./page2.css";
 const Page2 = ({ setUploadedFile, uploadedFile }) => {
   const navigate = useNavigate();
   const [uploadedImage, setUploadedImage] = useState(null);
-  const [isUploaded, setIsUploaded] = useState(!!uploadedFile); // 업로드 상태를 초기화
+  const [isUploaded, setIsUploaded] = useState(!!uploadedFile); 
 
-  // 업로드된 파일이 변경될 때 미리보기 이미지를 업데이트
   useEffect(() => {
     if (uploadedFile) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        setUploadedImage(event.target.result); // 미리보기 이미지 설정
+        setUploadedImage(event.target.result);
       };
       reader.readAsDataURL(uploadedFile);
     }
@@ -22,22 +21,22 @@ const Page2 = ({ setUploadedFile, uploadedFile }) => {
     if (isUploaded) {
       navigate("/page3");
     } else {
-      alert("이미지를 업로드해주세요."); // 알림 표시
+      alert("이미지를 업로드해주세요."); 
     }
   };
 
   const handlePrevious = () => {
-    navigate("/"); // 이전 페이지로 이동 (상태는 유지됨)
+    navigate("/");
   };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0]; // 업로드된 파일 가져오기
+    const file = e.target.files[0]; 
     if (file) {
-      setUploadedFile(file); // 부모 컴포넌트로 파일 전달
+      setUploadedFile(file); 
       const reader = new FileReader();
       reader.onload = (event) => {
-        setUploadedImage(event.target.result); // 이미지 미리보기 상태 저장
-        setIsUploaded(true); // 업로드 완료 상태로 변경
+        setUploadedImage(event.target.result);
+        setIsUploaded(true);
       };
       reader.readAsDataURL(file);
     }
@@ -77,7 +76,7 @@ const Page2 = ({ setUploadedFile, uploadedFile }) => {
         <button
           className="next-button"
           onClick={handleNext}
-          disabled={!isUploaded} // 업로드 전에는 비활성화
+          disabled={!isUploaded} 
         >
           다음
         </button>
