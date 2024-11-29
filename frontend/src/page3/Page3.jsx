@@ -93,6 +93,7 @@ const Page3 = ({ uploadedFile, setPredictionResult }) => {
 
       try {
         const API_URL = process.env.REACT_APP_API_URL;
+        console.log("API URL from .env:", process.env.REACT_APP_API_URL);
         const response = await axios.post(`${API_URL}/predict/`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",

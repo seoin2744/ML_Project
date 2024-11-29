@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fdcf0a02.css",
+    "main.js": "/static/js/main.afb92a1f.js",
+    "static/media/Cafe24Ohsquare.woff2": "/static/media/Cafe24Ohsquare.d030b0f09e844af57175.woff2",
+    "index.html": "/index.html",
+    "main.fdcf0a02.css.map": "/static/css/main.fdcf0a02.css.map",
+    "main.afb92a1f.js.map": "/static/js/main.afb92a1f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fdcf0a02.css",
+    "static/js/main.afb92a1f.js"
+  ]
+}
