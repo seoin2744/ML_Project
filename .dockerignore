@@ -1,0 +1,7 @@
+node_modules
+build
+venv
+*.pem
+.env
+.git
+.gitignore
