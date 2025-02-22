@@ -1,6 +1,7 @@
 # ML_Project Frontend
 - 실행 경로 : `cd frontend`
-  npm start로 실행됨.
+
+npm start로 실행됨.
 
 # ML_Project backend
 - backend 디렉터리 내에서 `python -m venv venv` 로 가상환경 생성
